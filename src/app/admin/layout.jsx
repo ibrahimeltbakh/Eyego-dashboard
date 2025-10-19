@@ -12,10 +12,7 @@ const sidebarGroups = [
   {
     icon: <AiOutlineProduct className="w-4 h-4" />,
     title: "Products",
-    links: [
-      { label: "Products List", href: "/admin/products" },
-      { label: "Add Product", href: "/admin/products/add" },
-    ],
+    links: [{ label: "Products List", href: "/admin/products" }],
   },
 ];
 
@@ -25,13 +22,13 @@ export default function AdminLayout({ children }) {
   const location = usePathname();
 
   useEffect(() => {
-    if (location === "/admin/home") {
+    if (location === "/admin") {
       setIsHomeActive(true);
       setActiveGroup(null);
     } else {
       setIsHomeActive(false);
     }
-  }, [location.pathname]);
+  }, [location]);
 
   return (
     <div className="flex">
@@ -40,11 +37,10 @@ export default function AdminLayout({ children }) {
           className={`border font-semibold rounded mb-5 flex items-center justify-center px-3 py-1 
           ${
             isHomeActive
-              ? "bg-blue-600 text-white"
-              : "text-blue-600 hover:bg-[hsl(var(--sidebar-accent))]"
+              ? "bg-gradient-to-l from-blue-300 to-blue-500 text-white"
+              : "hover:bg-gradient-to-l hover:from-blue-300 hover:to-blue-500 hover:text-white"
           }`}>
-          <FaHome />
-          <SidebarItem label="Home" href="/admin" />
+          <SidebarItem icon={<FaHome />} label="Home" href="/admin" />
         </div>
 
         {sidebarGroups.map((group, index) => (
@@ -67,7 +63,7 @@ export default function AdminLayout({ children }) {
         ))}
       </Sidebar>
 
-      <div className="flex-1 p-6">{children}</div>
+      <div className="w-full p-6">{children}</div>
     </div>
   );
 }
