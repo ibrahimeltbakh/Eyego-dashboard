@@ -6,9 +6,6 @@ import { SidebarItem } from "../../components/Admin/sidebar/SidebarItem";
 import { BiSolidDownArrowAlt } from "react-icons/bi";
 import { FaHome } from "react-icons/fa";
 import { AiOutlineProduct } from "react-icons/ai";
-import { MdOutlineCategory } from "react-icons/md";
-import { TbBrandShopee } from "react-icons/tb";
-import { FaTicketAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 const sidebarGroups = [
@@ -18,30 +15,6 @@ const sidebarGroups = [
     links: [
       { label: "Products List", href: "/admin/products" },
       { label: "Add Product", href: "/admin/products/add" },
-    ],
-  },
-  {
-    icon: <MdOutlineCategory className="w-4 h-4" />,
-    title: "Categories",
-    links: [
-      { label: "Categories List", href: "/admin/categories" },
-      { label: "Add Category", href: "/admin/categories/add" },
-    ],
-  },
-  {
-    icon: <TbBrandShopee className="w-4 h-4" />,
-    title: "Brands",
-    links: [
-      { label: "Brands List", href: "/admin/brands" },
-      { label: "Add Brand", href: "/admin/brands/add" },
-    ],
-  },
-  {
-    icon: <FaTicketAlt className="w-4 h-4" />,
-    title: "Coupons",
-    links: [
-      { label: "Coupons List", href: "/admin/coupons" },
-      { label: "Add Coupon", href: "/admin/coupons/add" },
     ],
   },
 ];
