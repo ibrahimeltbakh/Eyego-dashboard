@@ -3,6 +3,14 @@
 :root {
   --background: #1e2939;
   --foreground: #f2feff;
+  --white-color: #f2feff;
+  --black-color: #1c1c1c;
+  --blue-color: #004288;
+  --primary-color: #5669ff;
+  --light-primary-color: #dbe4ed;
+  --dark-blue-color: #101127;
+  --red-color: #ff5659;
+  --light-gray-color: #7b7b7b;
 }
 
 @theme inline {
@@ -10,6 +18,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --sidebar: var(--blue-color);
+  --sidebar-foreground: var(--white-color);
+  --sidebar-primary: var(--primary-color);
+  --sidebar-primary-foreground: var(--white-color);
+  --sidebar-accent: var(--black-color);
+  --sidebar-accent-foreground: var(--white-color);
+  --sidebar-border: var(--light-primary-color);
+  --sidebar-ring: var(--primary-color);
 }
 
 /* @media (prefers-color-scheme: dark) {
