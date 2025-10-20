@@ -66,6 +66,8 @@ export const removeProduct = async (productId) => {
 
 
 export const GetSpacificProduct = async (productId) => {
+
+
     const response = await api.get(`/products/${productId}`, {
         headers: { token: getToken() },
     });
