@@ -63,13 +63,15 @@ export default function AdminHome() {
         </p>
       </div>
 
-      <div className="w-full bg-gradient-to-br from-gray-700 to-gray-900  md:w-3/4 flex items-center justify-center  p-8">
-        <Chart data={overviewData.data} title={overviewData.title} />
+      <div className="w-full bg-gradient-to-br  from-gray-700 to-gray-900  md:w-3/4 flex items-center justify-center  p-8">
+        <div className="w-full max-w-[600px] min-w-[300px] h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px]">
+          <Chart data={overviewData.data} title={overviewData.title} />
+        </div>
       </div>
 
       <div className="w-full bg-gradient-to-br from-gray-700 to-gray-900  md:w-3/4 flex items-center justify-center flex-col gap-5  p-8">
         <div className="card w-full p-5 bg-yellow-200 border border-yellow-400 shadow-xl">
-          <div className="card-body flex justify-between flex-wrap gap-3 text-yellow-700">
+          <div className="card-body flex justify-center md:justify-between items-center flex-wrap gap-3 text-yellow-700">
             <h2 className="card-title flex gap-1 items-center">
               <BiShoppingBag size={25} />
               Total Orders
@@ -79,7 +81,7 @@ export default function AdminHome() {
         </div>
 
         <div className="card w-full p-5 bg-blue-300 border border-blue-400 shadow-xl">
-          <div className="card-body flex justify-between flex-wrap gap-3 text-blue-700">
+          <div className="card-body flex justify-center md:justify-between items-center flex-wrap gap-3 text-blue-700">
             <h2 className="card-title flex gap-1 items-center">
               <BiUser size={25} />
               Total Users
@@ -89,7 +91,7 @@ export default function AdminHome() {
         </div>
 
         <div className="card w-full p-5 bg-green-300 border border-green-400 shadow-xl">
-          <div className="card-body flex justify-between flex-wrap gap-3 text-green-700">
+          <div className="card-body flex justify-center md:justify-between items-center flex-wrap gap-3 text-green-700">
             <h2 className="card-title flex gap-1 items-center">
               <BiDollar size={25} />
               Total Revenue

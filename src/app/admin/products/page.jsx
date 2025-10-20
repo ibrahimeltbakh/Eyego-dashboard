@@ -39,7 +39,11 @@ export default function Products() {
       <h1 className="text-blue-400 text-3xl font-extrabold text-center ">
         Your Products
       </h1>
-      <Actions products={products} setFilteredProducts={setFilteredProducts} />
+      <Actions
+        products={products}
+        setFilteredProducts={setFilteredProducts}
+        filteredProducts={filteredProducts}
+      />
       <ProductsTable products={filteredProducts} />
     </div>
   );

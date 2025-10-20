@@ -52,9 +52,7 @@ export const Sidebar = ({ children }) => {
                 </button>
               </div>
 
-              <div
-                className="overflow-y-auto max-h-[calc(100vh-80px)] pr-2"
-                onClick={() => setIsOpen(false)}>
+              <div className="overflow-y-auto max-h-[calc(100vh-80px)] pr-2">
                 {children}
               </div>
             </motion.aside>

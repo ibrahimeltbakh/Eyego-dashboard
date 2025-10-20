@@ -7,7 +7,6 @@ const fetchProducts = createAsyncThunk("products/fetch", async (_, { rejectWithV
     try {
         const response = await axios.get(`${BASE_URL}/products`)
         return response.data
-
     } catch (error) {
         console.log(`Error Fitching Products ${error}`);
         return rejectWithValue(error.response?.data || error.message);

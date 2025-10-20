@@ -22,9 +22,9 @@ ChartJS.register(
 );
 
 export default function Chart({ data, title }) {
-  console.log(data);
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: true,

@@ -1,8 +1,20 @@
+"use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { getUser } from "@/lib/features/auth/authSlice";
 
-export default function Home() {
-  return (
-    <div>
-      <h1>Hello</h1>
-    </div>
-  );
+export default function HomeRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const user = getUser();
+    if (!user) {
+      router.replace("/login");
+    } else {
+      router.replace("/admin");
+    }
+  }, [router]);
+
+
+  return null;
 }

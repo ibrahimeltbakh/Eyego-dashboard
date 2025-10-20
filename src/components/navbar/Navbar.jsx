@@ -4,16 +4,16 @@ import { FaUser, FaSignInAlt, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { logout } from "@/lib/features/auth/authSlice";
+import { getUser, logout } from "@/lib/features/auth/authSlice";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const dropdownRef = useRef();
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -22,6 +22,11 @@ export default function Navbar() {
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const storedUser = getUser();
+    setUser(storedUser);
   }, []);
 
   const handelLogout = async () => {

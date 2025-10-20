@@ -45,7 +45,7 @@ export default function Login() {
       });
       setTimeout(() => {
         router.push("/");
-      }, 1000);
+      }, 500);
     } else if (result.meta.requestStatus === "rejected") {
       showToast.error(`${result.payload.message}`, {
         duration: 4000,
