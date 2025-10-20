@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -11,18 +11,29 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-
-const tableHead = [
-  { title: "Name", key: "name" },
-  { title: "Price", key: "price" },
-  { title: "Stock", key: "stock" },
-  { title: "Sold", key: "sold" },
-  { title: "Image", key: "image" },
-];
-
-const ITEMS_PER_PAGE = 5;
+import UpdateProductButton from "./UpdateProductButton";
+import RemoveProductButton from "./RemoveProductButton";
+import { getUser } from "@/lib/features/auth/authSlice";
 
 export default function ProductsTable({ products = [] }) {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const u = getUser();
+    setUser(u);
+  }, []);
+
+  const tableHead = [
+    { title: "Name", key: "name" },
+    { title: "Price", key: "price" },
+    { title: "Stock", key: "stock" },
+    { title: "Sold", key: "sold" },
+    { title: "Image", key: "image" },
+  ];
+
+  if (user?.user.role === "admin")
+    tableHead.push({ title: "Actions", key: "actions" });
+  const ITEMS_PER_PAGE = 5;
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
@@ -65,6 +76,16 @@ export default function ProductsTable({ products = [] }) {
                     className="rounded-md mx-auto"
                   />
                 </TableCell>
+                {user?.user.role === "admin" && (
+                  <TableCell className="px-6 py-3">
+                    <UpdateProductButton
+                      productId={product?._id || product?.id}
+                    />
+                    <RemoveProductButton
+                      productId={product?._id || product?.id}
+                    />
+                  </TableCell>
+                )}
               </TableRow>
             ))}
           </TableBody>

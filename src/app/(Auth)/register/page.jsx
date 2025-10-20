@@ -32,7 +32,6 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     const result = await dispatch(registerAction(data));
-    console.log(result);
     if (result.meta.requestStatus === "fulfilled") {
       showToast.success(`${result.payload.message}`, {
         duration: 4000,

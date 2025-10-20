@@ -7,16 +7,30 @@ import { BiSolidDownArrowAlt } from "react-icons/bi";
 import { FaHome } from "react-icons/fa";
 import { AiOutlineProduct } from "react-icons/ai";
 import { useEffect, useState } from "react";
-
-const sidebarGroups = [
-  {
-    icon: <AiOutlineProduct className="w-4 h-4" />,
-    title: "Products",
-    links: [{ label: "Products List", href: "/admin/products" }],
-  },
-];
+import { getUser } from "@/lib/features/auth/authSlice";
 
 export default function AdminLayout({ children }) {
+  const sidebarGroups = [
+    {
+      icon: <AiOutlineProduct className="w-4 h-4" />,
+      title: "Products",
+      links: [{ label: "Products List", href: "/admin/products" }, ,],
+    },
+  ];
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const u = getUser();
+    setUser(u);
+  }, []);
+
+  if (user?.user.role === "admin") {
+    sidebarGroups[0].links.push({
+      label: "Add Product",
+      href: "/admin/products/addProduct",
+    });
+  }
+
   const [activeGroup, setActiveGroup] = useState(null);
   const [isHomeActive, setIsHomeActive] = useState(false);
   const location = usePathname();
